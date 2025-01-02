@@ -2,24 +2,39 @@ package com.akash.rest.webservices.restful_web_services.TodoController;
 
 import java.util.Date;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+
+@Entity
 public class Todo {
-	private long id;
+	
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String username;
 	private String description;
 	private Date date;
 	private Boolean isDone;
 	
-	public Todo(long id, String description, Date date, Boolean isDone) {
+	public Todo() {
+		
+	}
+	
+	public Todo(Long id,String username, String description, Date date, Boolean isDone) {
 		this.id = id;
+		this.username = username;
 		this.description=description;
 		this.date = date;
 		this.isDone = isDone;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-
-	public void setId(long id) {
+	
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -45,5 +60,13 @@ public class Todo {
 
 	public void setIsDone(Boolean isDone) {
 		this.isDone = isDone;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+	
+	public void setUsername(String username) {
+		this.username= username;
 	}
 }

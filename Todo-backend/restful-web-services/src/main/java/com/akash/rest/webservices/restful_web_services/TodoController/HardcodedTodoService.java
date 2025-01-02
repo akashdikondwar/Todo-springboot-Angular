@@ -6,7 +6,6 @@ import java.util.Date;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @Service
 public class HardcodedTodoService {
 	
@@ -14,10 +13,10 @@ public class HardcodedTodoService {
 	private static ArrayList<Todo> todos = new ArrayList<>();
 	
 	static {
-		todos.add(new Todo(++counter, "Learn Angular", new Date(), false) );
-		todos.add(new Todo(++counter, "Learn React", new Date(), false) );
-		todos.add(new Todo(++counter, "Learn Python", new Date(), false) );
-		todos.add(new Todo(++counter, "Learn Javascript", new Date(), false) );
+		todos.add(new Todo(++counter,"Akash", "Learn Angular", new Date(), false) );
+		todos.add(new Todo(++counter,"Akash", "Learn React", new Date(), false) );
+		todos.add(new Todo(++counter,"Akash", "Learn Python", new Date(), false) );
+		todos.add(new Todo(++counter,"Akash", "Learn Javascript", new Date(), false) );
 
 	}
 	
@@ -51,17 +50,9 @@ public class HardcodedTodoService {
 	}
 	
 	public Todo updateTodo(String username, long id, Todo todo) {
-		todos.remove(findTodoById(id));
+		todos.remove(getTodoById(id));
 		todos.add(todo);
 		return todo;
-	}
-	
-	public Todo findTodoById(long id) {
-		for(Todo todo: todos) {
-			if(todo.getId()==id)
-				return todo;
-		}
-		return null;
 	}
 	
 }
